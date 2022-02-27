@@ -1,5 +1,8 @@
 # depslib dependency file v1.0
-1645994516 source:d:\homework\mini_paint\main.cpp
+1645995575 source:d:\homework\mini_paint\main.cpp
+	"mini_paint.h"
+
+1645995572 d:\homework\mini_paint\mini_paint.h
 	<iostream>
 	<fstream>
 	<vector>
