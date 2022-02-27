@@ -181,7 +181,6 @@ void line (vector <vector <char>> &board, vector <string> command) {
     int y = 0;
     for (int x = 0; x < dx; x++) {
         y = round(k * x);
-        cout << x << " @ " << y << " @ " << k << endl;
         board[y + y1][x + x1] = symb;
     }
 }
@@ -206,7 +205,6 @@ int main(int argc, char* argv[]) {
         for (int j = 0; j < WIDTH; j++) temp.push_back(BG_CHAR);
         board.push_back(temp);
     }
-    //for (int i = 0; i < commands.size(); i++) for (int j = 0; j < commands[i].size(); j++) cout << commands[i][j] << endl;
 
     for (int i = 1; i < commands.size(); i++) {
         if (commands[i][0] == "r") rect(board, commands[i]);
