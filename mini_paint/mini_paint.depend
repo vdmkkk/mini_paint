@@ -1,10 +1,16 @@
 # depslib dependency file v1.0
-1645995575 source:d:\homework\mini_paint\main.cpp
+1646466841 source:d:\homework\mini_paint\main.cpp
 	"mini_paint.h"
 
-1645995572 d:\homework\mini_paint\mini_paint.h
+1645995611 d:\homework\mini_paint\mini_paint.h
 	<iostream>
 	<fstream>
 	<vector>
 	<cmath>
+
+1646978620 source:d:\homework\mini_paint\drawing.cpp
+	"mini_paint.h"
+
+1646376222 source:d:\homework\mini_paint\itc_funcs.cpp
+	"mini_paint.h"
 

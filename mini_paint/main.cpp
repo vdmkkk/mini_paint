@@ -5,7 +5,8 @@ void input(vector <vector <string>> &commands, char* path) {
     ifstream in;
     string line;
     in.open(path);
-    while(in.good()){
+    if (in.is_open()){
+        while(in.good()){
         vector <string> commandsLine;
         getline(in, line);
         int start = 0;
@@ -16,8 +17,13 @@ void input(vector <vector <string>> &commands, char* path) {
             }
         }
         commandsLine.push_back(itc_slice_str(line, start, itc_len(line) - 1));
-        commands.push_back(commandsLine);
+        vector <string> newLine;
+        for (int i = 0; i < commandsLine.size(); i++)if (commandsLine[i] != "")newLine.push_back(commandsLine[i]);
+        commands.push_back(newLine);
+        }
     }
+    else {cerr << "Error: operation file corrupted"; throw -1;}
+
     //for (int i = 0; i < commands.size(); i++) for (int j = 0; j < commands[i].size(); j++) cout << "c" << i << ": " << commands[i][j] << endl;
 
     in.close();
@@ -40,10 +46,27 @@ int main(int argc, char* argv[]) {
         cerr << "Too many / not enough arguments";
         return -1;
     }
+    if (argv[1][itc_len(argv[1]) - 1] != 't' || argv[1][itc_len(argv[1]) - 2] != 'i' || argv[1][itc_len(argv[1]) - 3] != '.'){
+        cerr << "Wrong file extension";
+        return -1;
+    }
+    int slash = 0;
+    for (int i = itc_len(argv[1]) - 1; i > -1; i--){
+        if (argv[1][i] == '\\') slash = i;
+    }
+    if (itc_slice_str(argv[1], slash + 1, itc_len(argv[1]) - 4) != "operation"){
+        cerr << "Wrong file name";
+        return -1;
+    }
     vector <vector <string>> commands;
     input(commands, argv[1]);
+    if (commands[0].size() != 3) throw invalid_argument("WRONG AMOUNT OF ARGUMENTS");
     int WIDTH = stringToInt(commands[0][0]);
+    if (WIDTH > 300) WIDTH = 300;
+    if (WIDTH < 0) WIDTH = 0;
     int HEIGHT = stringToInt(commands[0][1]);
+    if (HEIGHT > 300) HEIGHT = 300;
+    if (HEIGHT < 0) HEIGHT = 0;
     char BG_CHAR = (char) commands[0][2][0];
 
     vector <vector <char>> board;

@@ -41,7 +41,8 @@ string itc_slice_str(string str, int start, int ending){
 int stringToInt(string s) {
     int num = 0;
     for (int i = 0; i < itc_len(s); i++) {
-        num += (int(s[i]) - 48) * itc_pow(10, itc_len(s) - i - 1);
+        if (s[i] >= 48 && s[i] <= 57) num += (int(s[i]) - 48) * itc_pow(10, itc_len(s) - i - 1);
+        else throw invalid_argument("WRONG ARGUMENT");
     }
     return num;
 }
